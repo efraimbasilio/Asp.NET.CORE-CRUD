@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Student>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }                  
+    </style>
+</head>
+<body>
+
+    <h2>Student Information Table</h2>
+  
+    <table>
+        <tr>
+            @*<th>Id</th>*@
+            <th>Complete Name</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Allowance</th>
+            <th>Modify</th>
+            <th>Remove</th>
+        </tr>
+
+        @foreach (var p in Model)
+        {
+            <tr>
+                @*<td>@p.Id</td>*@
+                <td>@p.Name</td>
+                <td>@p.Address</td>
+                <td>@p.Age</td>
+                <td>@string.Format(new System.Globalization.CultureInfo("en-PH"),"{0:C2}", p.Allowance)</td>
+
+                <td><a class="btn-sm btn-success" asp-action="Update" asp-route-id="@p.Id">Update</a></td>
+                <td>
+                    <form asp-action="Delete" method="post" asp-route-id="@p.Id">
+                        <button class="btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <form action="/" method="post">
+        <button asp-action="Create" class="btn btn-primary">Add New</button>
+    </form>
+
+</body>
+</html>

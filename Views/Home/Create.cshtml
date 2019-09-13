@@ -1,0 +1,46 @@
+﻿@model Student
+
+@{
+    var title = "Create Student Information";
+    ViewData["Title"] = title;
+
+}
+<h2>@title</h2>
+
+@*<form action="" method="post">
+        First name:<br>
+        <input type="text" name="Name"><br>
+        Address:<br>
+        <input type="text" name="Address"><br>
+        Age:<br>
+        <input type="text" name="Age"><br>
+        Allowance:<br>
+        <input type="text" name="Allowance"><br>
+
+        <input type="submit" value="Save" />
+    </form>*@
+
+<form class="" method="post">
+    <div class="form-group">
+        <label>Student Complete Name</label>
+        <input asp-for="Name" class="form-control" />       
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        <input asp-for="Address" type="text" class="form-control" />        
+    </div>
+
+    <div class="form-group">
+        <label>Age</label>
+        <input asp-for="Age" type="text" class="form-control" />        
+    </div>
+
+    <div class="form-group">
+        <label>Monthly Allowance</label>
+        <input asp-for="Allowance" type="text" class="form-control" />        
+    </div>
+
+    <button asp-action="Index" class="btn btn-primary">Submit</button>
+</form>
+
